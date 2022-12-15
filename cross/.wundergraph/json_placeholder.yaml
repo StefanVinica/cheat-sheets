@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: jsonplaceholder
+  version: '1.0'
+servers:
+  - url: 'http://167.172.142.105:5000/cassandra-leaves'
+paths:
+  /:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Leaf'
+      operationId: leaves
+  '/posts/{postID}/comments':
+    parameters:
+      - schema:
+          type: string
+        name: postID
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+      operationId: postComments
+components:
+  schemas:
+    Leaf:
+      title: Leaf
+      type: object
+      properties:
+        content:
+          type: string
+        domain_name:
+          type: string
+        http_status:
+          type: integer
+        id:
+          type: string
+        language:
+          type: string
+        last_sourced_from_wallabag:
+          type: string
+          format: date-time
+        mimetype:
+          type: string
+        preview_picture:
+          type: string
+        published_by:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        title:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+        user_email:
+          type: string
+        user_id:
+          type: string
+        user_name:
+          type: string
+        wallabag_created_at:
+          type: string
+          format: date-time
+        wallabag_is_archived:
+          type: boolean
+        wallabag_updated_at:
+          type: string
+          format: date-time
