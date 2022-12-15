@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: jsonplaceholder
+  version: "1.0"
+servers:
+  - url: "https://62ZQUSE7BN.algolia.net/1/indexes/wp_postsposts_post"
+paths:
+  /query:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: The query to search for
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Leaf"
+      operationId: blogpost
+  "/querys":
+    parameters:
+      - schema:
+          type: string
+        name: postID
+        in: path
+        required: true
+components:
+  schemas:
+    BlogPost:
+        post_id:
+    type: integer
+    description: The ID of the post
+  post_type:
+    type: string
+    description: The type of the post
+  post_type_label:
+    type: string
+    description: The label of the post type
+  post_title:
+    type: string
+    description: The title of the post
+  post_excerpt:
+    type: string
+    description: The excerpt of the post
+  post_date:
+    type: integer
+    description: The date when the post was published
+  post_date_formatted:
+    type: string
+    description: The formatted date when the post was published
+  post_modified:
+    type: integer
+    description: The date when the post was modified
+  comment_count:
+    type: integer
+    description: The number of comments on the post
+  menu_order:
+    type: integer
+    description: The menu order of the post
+  post_author:
+    type: object
+    description: The author of the post
+    properties:
+      user_id:
+        type: integer
+        description: The ID of the user
+      display_name:
+        type: string
+        description: The display name of the user
+      user_url:
+        type: string
+        description: The URL of the user
+      user_login:
+        type: string
+        description: The login name of the user
+  images:
+    type: object
+    description: The images associated with the post
+    properties:
+      thumbnail:
+        type: object
+        description: The thumbnail image of the post
+        properties:
+          url:
+            type: string
+            description: The URL of the thumbnail image
+          width:
+            type: integer
+            description: The width of the thumbnail image
+          height:
+            type: integer
+            description: The height of the thumbnail image
+  permalink:
+    type: string
+    description: The permanent link of the post
+  post_mime_type:
+    type: string
+    description: The MIME type of the post
+  taxonomies:
+    type: object
+    description: The taxonomies associated with the post
+    properties:
+      category:
+        type: array
+        description: The categories associated with the post
+        items:
+          type: string
+      post_tag:
+        type: array
+        description: The tags associated with the post
+        items:
+          type: string
+  taxonomies_hierarchical:
+    type: object
+    description: The hierarchical taxonomies associated with the post
+    properties:
+      category:
+        type: object
+        description: The hierarchical categories associated with the post
+        properties:
+          lvl0:
+            type: array
+            description: The level 0 categories associated with the post
+            items:
+              type: string
+          lvl1:
+            type: array
+            description: The level 1 categories associated with the post
+            items:
+              type: string
+  is_sticky:
+    type: integer
+    description: A flag indicating whether the post is sticky
+  content:
+    type: string
+    description: The content of the post
+  record_index:
+    type: integer
+    description: The record index of the post
+  objectID:
+    type: string

@@ -17,7 +17,19 @@ const leaves = introspect.openApi({
 	apiNamespace: 'leaves',
 	source: {
 		kind: 'file',
-		filePath: './json_placeholder.yaml',
+		filePath: './leavesAPI.yaml',
+	},
+	introspection: {
+	  pollingIntervalSeconds: 2,
+	},
+	requestTimeoutSeconds: 18, // optional
+})
+
+const blogposts = introspect.openApi({
+	apiNamespace: 'blogposts',
+	source: {
+		kind: 'file',
+		filePath: './blogsAPI.yaml',
 	},
 	introspection: {
 	  pollingIntervalSeconds: 2,
@@ -27,7 +39,7 @@ const leaves = introspect.openApi({
 
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
-	apis: [weather, countries, leaves],
+	apis: [weather, countries, leaves, blogposts],
 	server,
 	operations,
 	codeGenerators: [
