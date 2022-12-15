@@ -3,9 +3,9 @@ info:
   title: jsonplaceholder
   version: '1.0'
 servers:
-  - url: 'http://167.172.142.105:5000/cassandra-leaves'
+  - url: 'http://167.172.142.105:5000'
 paths:
-  /:
+  /cassandra-leaves:
     get:
       summary: Your GET endpoint
       tags: []
@@ -19,7 +19,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Leaf'
       operationId: leaves
-  '/posts/{postID}/comments':
+  '/cassandra-leavess':
     parameters:
       - schema:
           type: string

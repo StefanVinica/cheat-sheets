@@ -12,11 +12,6 @@ const countries = introspect.graphql({
 	url: 'https://countries.trevorblades.com/',
 });
 
-// const mindy = introspect.graphql({
-// 	apiNamespace: 'mindy',
-// 	url: 'http://167.172.142.105:3000/api/graphql',
-// });
-
 
 const leaves = introspect.openApi({
 	apiNamespace: 'leaves',
@@ -27,7 +22,7 @@ const leaves = introspect.openApi({
 	introspection: {
 	  pollingIntervalSeconds: 2,
 	},
-	requestTimeoutSeconds: 10, // optional
+	requestTimeoutSeconds: 18, // optional
 })
 
 // configureWunderGraph emits the configuration
